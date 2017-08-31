@@ -1,0 +1,102 @@
+//Variables
+@grid-columns: 6;
+@grid-gutter:  16; //In pixels
+@half-grid-gutter:  unit((@grid-gutter/2), px); //In pixels
+
+@breakpoints:       4; // 0 = Not responsive
+@breakpoints-sizes: 480, 768, 1024, 1280, 1440, 1680, 1920; // (in pixels) Must have atleast equal to number of breakpoints
+
+@row-namespace:        row;
+@col-namespace:        col;
+@breakpoint-namespace: bp;
+
+
+//Mixins
+.col-declarations() {
+    flex-grow: 1;
+    flex-basis: 0;
+    max-width: 100%;
+}
+
+.col-width-declarations() {
+    flex-basis: ((@grid-column / @grid-columns) * 100%);
+    max-width: ((@grid-column / @grid-columns) * 100%);
+}
+
+.bp--min(@bp; @rules) {
+    & when (@breakpoints > 0) and (length(@breakpoints-sizes) >= @breakpoints) {
+        & when (@bp > 0) and (length(@breakpoints-sizes) >= @bp) and (@breakpoints >= @bp) {
+            @media screen and (min-width: unit(extract(@breakpoints-sizes, @bp),px)) {
+                @rules();
+            }
+        }
+    }
+}
+
+.for(@i, @n) {.-each(@i)}
+.for(@n)     when (isnumber(@n)) {.for(1, @n)}
+.for(@i, @n) when not (@i = @n)  {
+    .for((@i + (@n - @i) / abs(@n - @i)), @n);
+}
+
+.for(@array)   when (default()) {.for-impl_(length(@array))}
+.for-impl_(@i) when (@i > 1)    {.for-impl_((@i - 1))}
+.for-impl_(@i) when (@i > 0)    {.-each(extract(@array, @i))}
+
+
+//Grid
+.row-wrapper {
+    width: 100%;
+}
+
+.@{row-namespace} {
+    @margin : unit(@grid-gutter, px);
+    list-style: none; //1
+    margin: 0; //1
+    padding: 0; //1
+    box-sizing: border-box;
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    // flex-wrap: wrap; // REMOVED DUE TO IOS WEBKIT BUG WITH WRAPPING
+    width: ~"calc(100% + @{margin})";
+
+    & {
+
+        margin-left: -@margin;
+
+        > .@{col-namespace} {
+            padding-left: unit(@grid-gutter, px);
+        }
+    }
+}
+
+.@{col-namespace} {
+    box-sizing: border-box;
+    .col-declarations;
+
+    .for(@grid-columns); .-each(@grid-column) {
+        //.col--$
+        &--@{grid-column} {
+            .col-width-declarations;
+        }
+    }
+
+    & when (@breakpoints > 0) and (length(@breakpoints-sizes) >= @breakpoints) {
+        .for(@breakpoints); .-each(@breakpoint) {
+            .bp--min(@breakpoint, {
+                //.col-bp1
+                &-@{breakpoint-namespace}@{breakpoint} {
+                    .col-declarations;
+                }
+
+                .for(@grid-columns); .-each(@grid-column) {
+                    //.col-bp1--$
+                    &-@{breakpoint-namespace}@{breakpoint}--@{grid-column} {
+                        .col-width-declarations;
+                    }
+                }
+            });
+        }
+    }
+}
