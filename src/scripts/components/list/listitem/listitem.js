@@ -9,12 +9,13 @@ export default class Listitem extends React.Component {
   }
 
   componentWillMount(){
+
   }
 
   render () {
     return (
       <li>
-        <h2>A list item</h2>
+        <h2>{this.props.config.name}</h2>
       </li>
     );
   }
