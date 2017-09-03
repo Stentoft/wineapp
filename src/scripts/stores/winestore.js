@@ -8,6 +8,7 @@ class WineStore extends EventEmitter {
     this.setMaxListeners(50);
     this.wineList = [];
     this.getInitialWineData();
+    this.selectedWine = null;
   }
 
   getInitialWineData(){
@@ -29,10 +30,18 @@ class WineStore extends EventEmitter {
     this.emit('wine-list:change', this.wineList);
   }
 
+  handleDetailview(wine){
+    this.selectedWine = wine;
+    this.emit('selected-wine:change', this.selectedWine);
+  }
+
   handleActions(evt){
     switch (evt.type) {
-      case "SUBMITWINE": {
+      case "SUBMIT_WINE": {
         this.addWine(evt.data);
+      } break;
+      case "SHOW_WINE_IN_DETAIL": {
+        this.handleDetailview(evt.data);
       } break;
     }
   }

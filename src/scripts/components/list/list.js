@@ -28,7 +28,7 @@ export default class List extends React.Component {
 
   render () {
     return (
-      <ul>
+      <ul class="wine-list">
         {this.state.list}
       </ul>
     );

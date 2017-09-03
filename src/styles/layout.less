@@ -8,3 +8,32 @@ html, body {
 * {
   box-sizing: border-box;
 }
+
+.page-content {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  background: @page-background;
+  transition-duration: .4s;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.05);
+
+  &--offset {
+    transform: translateX(-88%);
+
+    &:after{
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      animation: .3s linear fade forwards;
+    }
+  }
+}
+
+@keyframes fade {
+  100% {
+      background: rgba(255,255,255,0.8);
+  }
+}

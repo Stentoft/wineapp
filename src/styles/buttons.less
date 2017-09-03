@@ -1,0 +1,45 @@
+.btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  .tertiary-header();
+
+  &--large {
+      width: 100%;
+  }
+}
+
+.icon-btn {
+  position: relative;
+  @size: 42px;
+  width: @size;
+  height: @size;
+
+  &:before,&:after{
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      width: 24px;
+      border: @content-border;
+  }
+  &--back {
+    transform: rotate(45deg);
+
+    &:before {
+      transform: translate(-50%,-50%) rotate(90deg);
+    }
+    &:after {
+
+    }
+  }
+
+  &--plus {
+    &:before {
+      transform: translate(-50%,-50%) rotate(90deg);
+    }
+  }
+}
