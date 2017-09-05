@@ -7,8 +7,21 @@ export function addWine(data){
   })
 }
 
+export function deleteWine(data){
+  dispatcher.dispatch({
+    type:"DELETE_WINE",
+    data
+  })
+}
 
-export function showWineInDetail(data){
+export function editWine(data){
+  dispatcher.dispatch({
+    type:"EDIT_WINE",
+    data
+  })
+}
+
+export function showDetailView(data){
   dispatcher.dispatch({
     type:"SHOW_WINE_IN_DETAIL",
     data

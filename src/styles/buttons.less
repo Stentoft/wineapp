@@ -3,11 +3,36 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  background: #fff;
+  border: none;
+  outline: none;
 
   .tertiary-header();
 
   &--large {
       width: 100%;
+  }
+
+  &--submit {
+    border: @content-border;
+    padding: @content-padding;
+    background: #c7eaff;
+  }
+
+  &--delete, &--edit {
+    .quaternary-header();
+    padding: @content-padding;
+    border: none;
+    margin: 0;
+  }
+
+  &--delete {
+    background: #ffdede;
+  }
+
+  &--edit {
+    background: #c7eaff;
   }
 }
 
@@ -16,6 +41,7 @@
   @size: 42px;
   width: @size;
   height: @size;
+  cursor: pointer;
 
   &:before,&:after{
       content: "";

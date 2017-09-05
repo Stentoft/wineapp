@@ -20,28 +20,50 @@ class WineStore extends EventEmitter {
 
   mockedWineDataService(){
     return new Promise((resolve,reject)=>{
-      console.log(winejson);
       resolve(winejson);
     })
   }
 
+  getIndexOfWine(wine){
+    const wineId = wine.id || null;
+    const indexOfWine = wineId ? this.wineList.findIndex(w => w.id == wineId) : null;
+    return indexOfWine
+  }
+
   addWine(wine){
-    this.wineList.push(wine);
+    const indexOfWine = this.getIndexOfWine(wine);
+    indexOfWine ? this.wineList.splice(indexOfWine,1,wine) : this.wineList.push(wine);
     this.emit('wine-list:change', this.wineList);
   }
 
-  handleDetailview(wine){
+  deleteWine(wine){
+    const indexOfWine = this.getIndexOfWine(wine)
+    indexOfWine && this.wineList.splice(indexOfWine,1);
+    this.emit('wine-list:change', this.wineList);
+  }
+
+  editWine(wine){
+    this.emit('edit-wine', wine);
+  }
+
+  handleDetailView(wine){
     this.selectedWine = wine;
     this.emit('selected-wine:change', this.selectedWine);
   }
 
   handleActions(evt){
     switch (evt.type) {
+      case "EDIT_WINE": {
+        this.editWine(evt.data);
+      } break;
       case "SUBMIT_WINE": {
         this.addWine(evt.data);
       } break;
+      case "DELETE_WINE": {
+        this.deleteWine(evt.data);
+      } break;
       case "SHOW_WINE_IN_DETAIL": {
-        this.handleDetailview(evt.data);
+        this.handleDetailView(evt.data);
       } break;
     }
   }

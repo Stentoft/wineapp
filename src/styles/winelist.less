@@ -1,10 +1,44 @@
 .wine-list {
   list-style: none;
-  margin: 0;
+  width: 100%;
   padding: 0;
+  margin: 0;
 
   &__item {
+    position: relative;
     padding: @content-padding;
+    padding-right: @content-padding*2;
     border-bottom: @content-border;
+
+    &:hover {
+      background: #f3f3f3;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 12px;
+    }
+
+    &.red {
+      &:after {
+        background: #722f37;
+      }
+    }
+
+    &.white {
+      &:after {
+        background: #f4f7c5;
+      }
+    }
+
+    &.rosé {
+      &:after {
+        background: #ffdede;
+      }
+    }
   }
 }

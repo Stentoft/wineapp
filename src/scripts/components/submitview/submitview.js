@@ -19,12 +19,27 @@ class Wine {
 }
 
 export default class SubmitView extends React.Component {
-  constructor() {
-    super();
-    this.state = {}
+  constructor(props) {
+    super(props);
+    this.state = {
+      config : props.config
+    }
   }
 
-  componentWillMount(){
+  componentDidMount(){
+    this.state.config && this.setInputsVals(this.state.config);
+  }
+
+  setInputsVals(data){
+    this.nameInput.value = data.name;
+    this.starsSelect.value = data.stars;
+    const countrySelectElement = ReactDOM.findDOMNode(this.countrySelect)
+    countrySelectElement.value = data.country;
+    this.colorSelect.value = data.color;
+    this.grapesInput.value = data.grapes;
+    const yearSelectElement = ReactDOM.findDOMNode(this.yearSelect);
+    yearSelectElement.value = data.year_made;
+    this.regionInput.value = data.region;
   }
 
   handleSubmit(e){
@@ -40,14 +55,20 @@ export default class SubmitView extends React.Component {
     const region = this.regionInput.value;
 
     const vin = new Wine(name, stars, country, color, grapes, year, region);
-    console.log(vin);
+    if (this.state.config) vin.id = this.state.config.id;
+
     WineActions.addWine(vin);
+    this.closeView();
+  }
+
+  closeView(){
+    WineActions.showDetailView(false);
   }
 
   render () {
     return (
       <div class="submit-view">
-        <div class="top-bar" onClick={this.handleClick}>
+        <div class="top-bar" onClick={this.closeView}>
           <div class="icon-btn icon-btn--back"></div>
         </div>
         <h2>Add a wine</h2>
@@ -83,6 +104,7 @@ export default class SubmitView extends React.Component {
               </label>
               <select id="wine-colors" ref={(select) => this.colorSelect = select}>
                 <option value="Red">Red</option>
+                <option value="Rosé">Rosé</option>
                 <option value="White">White</option>
               </select>
             </div>
@@ -110,9 +132,6 @@ export default class SubmitView extends React.Component {
             <div class="col">
               <CountryOptions ref={(select) => { this.countrySelect = select; }}/>
             </div>
-          </div>
-
-          <div class="row">
             <div class="col">
               <YearOptions ref={(select) => { this.yearSelect = select; }} />
             </div>
@@ -123,7 +142,7 @@ export default class SubmitView extends React.Component {
             </div>
 
           </div>
-          <button onClick={this.handleSubmit.bind(this)}>Add</button>
+          <a class="btn btn--large btn--submit" onClick={this.handleSubmit.bind(this)}>Add</a>
         </form>
       </div>
     );

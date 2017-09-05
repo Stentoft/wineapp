@@ -20,6 +20,10 @@ html, body {
   &--offset {
     transform: translateX(-88%);
 
+    .bp--min(3; {
+      transform: translateX(-60%);
+    });
+
     &:after{
       content: "";
       position: absolute;
@@ -30,6 +34,10 @@ html, body {
       animation: .3s linear fade forwards;
     }
   }
+}
+
+.page-header {
+  padding: @content-padding;
 }
 
 @keyframes fade {

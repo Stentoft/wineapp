@@ -1,6 +1,6 @@
 .detail-view {
   .fixed-overlay();
-  background: #fffee8;
+  background: #fbfbfb;
   padding: @content-padding;
 
   &__form {
@@ -13,6 +13,33 @@
       .tertiary-header();
       width: 100%;
       padding: @content-padding/2;
+      border: @content-border;
+    }
+  }
+
+  &__edit-btns {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__delete-promt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    max-width: 400px;
+    transform: translate(-50%,-50%);
+    background: white;
+    padding: @content-padding;
+    border: @content-border;
+  }
+
+  .row {
+    align-items: center;
+
+
+    &:nth-of-type(2n){
+      background: #fff;
     }
   }
 }

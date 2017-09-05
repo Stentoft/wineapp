@@ -3,7 +3,7 @@
     "name": "Roscato Rosse Dolce",
     "stars": 5,
     "country": "Italy",
-    "color": "red",
+    "color": "Red",
     "grapes": [
       "teroldego",
       "lagrein"
@@ -17,7 +17,7 @@
     "name": "Marchesi Mazzei Zisola Doppiozeta Noto Rosso",
     "stars": 5,
     "country": "Italy",
-    "color": "red",
+    "color": "Red",
     "grapes": [
       "nero d'avola",
       "shiraz",
@@ -32,7 +32,7 @@
     "name": "Albert Boxler Edelzwicker Reserve",
     "stars": 5,
     "country": "France",
-    "color": "white",
+    "color": "White",
     "grapes": [
       "pinot blanc",
       "riesling",
@@ -48,7 +48,7 @@
     "name": "Campo Viejo Garnacha",
     "stars": 2,
     "country": "Spain",
-    "color": "red",
+    "color": "Red",
     "grapes": [
       "grenache"
     ],
@@ -61,7 +61,7 @@
     "name": "Robert Mondavi Twin Oaks Shiraz",
     "stars": 4,
     "country": "United States (CA)",
-    "color": "red",
+    "color": "Red",
     "grapes": [
       "shiraz"
     ],
@@ -74,7 +74,7 @@
     "name": "Yellowtail Sweet Red Roo",
     "stars": 5,
     "country": "Australia",
-    "color": "red",
+    "color": "Red",
     "grapes": [
       "shiraz",
       "cabernet sauvignon"
@@ -88,7 +88,7 @@
     "name": "Elmo Pio Moscato",
     "stars": 3,
     "country": "Italy",
-    "color": "white",
+    "color": "White",
     "grapes": [
       "moscato"
     ],
@@ -101,7 +101,7 @@
     "name": "Elmo Pio Piemonte Sweet Red Brachetto",
     "stars": 4,
     "country": "Italy",
-    "color": "red",
+    "color": "Red",
     "grapes": [
       "brachetto"
     ],
@@ -114,7 +114,7 @@
     "name": "Cavit Pinot Noir",
     "stars": 4,
     "country": "Italy",
-    "color": "red",
+    "color": "Red",
     "grapes": [
       "pinot noir"
     ],
@@ -127,7 +127,7 @@
     "name": "Yellowtail Shiraz Grenache",
     "stars": 5,
     "country": "Australia",
-    "color": "red",
+    "color": "Red",
     "grapes": [
       "shiraz",
       "grenache"
@@ -141,7 +141,7 @@
     "name": "FAT bastard Shiraz",
     "stars": 4,
     "country": "France",
-    "color": "red",
+    "color": "Red",
     "grapes": [
       "shiraz"
     ],
@@ -154,7 +154,7 @@
     "name": "Bully Hill Vineyards Love My Goat",
     "stars": 3,
     "country": "United States (NY)",
-    "color": "red",
+    "color": "Red",
     "grapes": [
       "baco noir",
       "foch"
@@ -168,7 +168,7 @@
     "name": "Castello Banfi Rosso di Montalcino Poggio alle Mura",
     "stars": 4,
     "country": "Italy",
-    "color": "red",
+    "color": "Red",
     "grapes": [
       "sangiovese"
     ],
@@ -181,7 +181,7 @@
     "name": "Los Vascos Rose",
     "stars": 4,
     "country": "Chile",
-    "color": "red",
+    "color": "Red",
     "grapes": [
       "cabernet sauvignon",
       "shiraz"
@@ -195,7 +195,7 @@
     "name": "Encanto Mencia Roble",
     "stars": 5,
     "country": "Spain",
-    "color": "red",
+    "color": "Red",
     "grapes": [
       "mencia"
     ],
@@ -208,7 +208,7 @@
     "name": "Yellowtail Cabernet Sauvignon",
     "stars": 1,
     "country": "Australia",
-    "color": "red",
+    "color": "Red",
     "grapes": [
       "cabernet sauvignon"
     ],
@@ -234,7 +234,7 @@
     "name": "Menage a Trois Merlot",
     "stars": 4,
     "country": "United States (CA)",
-    "color": "red",
+    "color": "Red",
     "grapes": [
       "merlot"
     ],
@@ -247,7 +247,7 @@
     "name": "Turkey Flat Butcher's Block",
     "stars": 5,
     "country": "Australia",
-    "color": "red",
+    "color": "Red",
     "grapes": [
       "shiraz",
       "grenache",
@@ -260,9 +260,9 @@
   },
   {
     "name": "Corte Giara Pinot Grigio",
-    "stars": 3.5,
+    "stars": 3,
     "country": "Italy",
-    "color": "white",
+    "color": "White",
     "grapes": [
       "pinot grigio"
     ],
@@ -273,9 +273,9 @@
   },
   {
     "name": "HRM Rex Goliath Chardonnay",
-    "stars": 4.5,
+    "stars": 4,
     "country": "United States (CA)",
-    "color": "white",
+    "color": "White",
     "grapes": [
       "chardonnay"
     ],

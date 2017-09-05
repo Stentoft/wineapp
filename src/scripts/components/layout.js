@@ -10,70 +10,67 @@ export default class Layout extends React.Component {
   constructor() {
     super();
     this.state = {
-      detailViewData : false,
-      showSubmitView : false,
       showUnderlay : false,
+      underlayView : null,
     }
   }
 
   componentWillMount(){
     WineStore.on('selected-wine:change', data => {
-      this.toogleDetailView(data);
+      const view = data ? <DetailView config={data}/> : null;
+      this.toggleUnderlay(view)
+    });
+    WineStore.on('edit-wine', data => {
+      const view = data ? <SubmitView config={data}/> : null;
+      this.setState({
+        underlayView : view
+      });
+    });
+    WineStore.on('wine-list:change', data => {
+      this.state.showSubmitView && this.toggleUnderlay();
     })
   }
 
-  toogleDetailView(data){
-    const detailViewData = data || false
-    this.toggleUnderlay();
+  toggleUnderlay(view){
+    const underlayView = view || false
 
+    this.setState({
+      showUnderlay : !this.state.showUnderlay
+    })
+
+    // For the sake of the animation
     setTimeout(()=>{
       this.setState({
-        detailViewData
+        underlayView
       })
-    },detailViewData ? 0 : 500)
-  }
-
-  toogleSubmitView(data){
-    const showSubmitView = data || false
-    this.toggleUnderlay();
-
-    setTimeout(()=>{
-      this.setState({
-        showSubmitView
-      })
-    },showSubmitView ? 0 : 500)
-  }
-
-  toggleUnderlay(){
-      this.setState({
-        showUnderlay : !this.state.showUnderlay
-      })
+    },underlayView ? 0 : 500)
   }
 
   handlePageClick(e){
     if(this.state.showUnderlay){
       e.preventDefault();
-      this.toogleDetailView();
-      this.toogleSubmitView();
+      this.toggleUnderlay()
     }
   }
 
-  handleSubmit(){
-    this.toggleUnderlay();
-    this.setState({
-      showSubmitView : !this.state.showSubmitView
-    })
+  showSubmitView(){
+    this.toggleUnderlay(<SubmitView/>);
   }
 
   render () {
     return (
       <div ref={(page) => { this.page = page; }}>
-        { this.state.detailViewData && <DetailView config={this.state.detailViewData}/> }
-        { this.state.showSubmitView && <SubmitView /> }
+        { this.state.underlayView && this.state.underlayView }
         <div class={`page-content ${this.state.showUnderlay ? 'page-content--offset' : ''}`} onClick={this.handlePageClick.bind(this)}>
-          <h1>Hello wineapp</h1>
+          <div class="row">
+            <div class="col">
+              <div class="page-header">
+                <h1>My Wine Stock</h1>
+              </div>
+            </div>
+          </div>
           <List />
-          <button class="btn btn--large" onClick={this.handleSubmit.bind(this)}><div class="icon-btn icon-btn--plus"></div>Add Wine</button>
+          <button class="btn btn--large" onClick={this.showSubmitView.bind(this)}><div class="icon-btn icon-btn--plus"></div>Add Wine</button>
         </div>
       </div>
     );
