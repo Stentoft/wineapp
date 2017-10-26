@@ -65,7 +65,7 @@ export default class Layout extends React.Component {
           <div class="row">
             <div class="col">
               <div class="page-header">
-                <h1>My Wine Stock</h1>
+                <h1>My Wine Stockz</h1>
               </div>
             </div>
           </div>
